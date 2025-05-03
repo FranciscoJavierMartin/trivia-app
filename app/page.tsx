@@ -2,6 +2,7 @@ import { Gamepad2 } from 'lucide-react';
 import LoadingScreen from './components/LoadingScreen';
 import QuestionScreen from './components/QuestionScreen';
 import GameOverScreen from './components/GameOverScreen';
+import SetupScreen from './components/SetupScreen';
 
 export default function Home() {
   return (
@@ -12,9 +13,10 @@ export default function Home() {
           Trivia game
         </h1>
         <div className='space-y-6'>
+          <SetupScreen />
           {/* <LoadingScreen /> */}
           {/* <QuestionScreen /> */}
-          <GameOverScreen />
+          {/* <GameOverScreen /> */}
         </div>
       </div>
     </div>
