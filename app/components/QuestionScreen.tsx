@@ -1,18 +1,19 @@
 import { CircleCheck, CircleX } from 'lucide-react';
 import Button from './ui/Button';
+import { QuestionData } from '../types';
 
-export default function QuestionScreen() {
+interface QuestionScreenProps {
+  questionData: QuestionData;
+}
+
+export default function QuestionScreen({ questionData }: QuestionScreenProps) {
   return (
     <>
-      <p>
-        Which planet in out solar system has the most moons, boasting an
-        impressive 92 discovered so far?
-      </p>
+      <p className='text-center text-lg'>{questionData.question}</p>
       <div className='space-y-3'>
-        <Button>Mars</Button>
-        <Button>Sun</Button>
-        <Button>Moon</Button>
-        <Button>Venus</Button>
+        {questionData.answers.map((answer) => (
+          <Button key={answer}>{answer}</Button>
+        ))}
       </div>
       <Button variant='primary'>Next question</Button>
       <div className='text-center text-sm'>

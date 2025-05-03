@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GameConfig, GameSession } from '../types';
 import { CATEGORIES, DIFFICULTIES, GAME_STATE } from '../constants';
+import { getQuestion } from '../actions/questions';
 
 const initialConfig: GameConfig = {
   category: CATEGORIES[0].value,
@@ -9,6 +10,11 @@ const initialConfig: GameConfig = {
 
 const initialGameSession: GameSession = {
   state: GAME_STATE.SETUP,
+  questionData: {
+    question: '',
+    answers: [],
+    correctAnswer: '',
+  },
 };
 
 export default function useGameState() {
@@ -20,17 +26,36 @@ export default function useGameState() {
     setConfig((prev) => ({ ...prev, ...newCOnfig }));
   }
 
-  function fetchNewQuestion() {
+  async function fetchNewQuestion() {
     setGameSession((prev) => ({
       ...prev,
       state: GAME_STATE.LOADING,
     }));
+
+    try {
+      const questionData = await getQuestion(
+        config.category,
+        config.difficulty,
+      );
+
+      setGameSession((prev) => ({
+        ...prev,
+        state: GAME_STATE.PLAYING,
+        questionData,
+      }));
+    } catch {
+      setGameSession((prev) => ({
+        ...prev,
+        state: GAME_STATE.ERROR,
+      }));
+    }
   }
 
   return {
     config,
     updateConfig,
     gameState: gameSession.state,
+    questionData: gameSession.questionData,
     fetchNewQuestion,
   };
 }

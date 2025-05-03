@@ -9,6 +9,13 @@ export interface GameConfig {
   difficulty: Difficulty;
 }
 
+export interface QuestionData {
+  question: string;
+  answers: string[];
+  correctAnswer: string;
+}
+
 export interface GameSession {
   state: GameState;
+  questionData: QuestionData;
 }
