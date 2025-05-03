@@ -36,6 +36,7 @@ export default function QuestionScreen({
         {questionData.answers.map((answer) => (
           <Button
             key={answer}
+            disabled={selectedAnswer !== ''}
             variant={getAnswerVariant(answer)}
             onClick={() => onAnswer(answer)}
           >
