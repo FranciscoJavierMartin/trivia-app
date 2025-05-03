@@ -50,6 +50,7 @@ export default function Home() {
             selectedAnswer={selectedAnswer}
             onAnswer={handleAnswer}
             score={score}
+            onNextQuestion={fetchNewQuestion}
           />
         );
         break;

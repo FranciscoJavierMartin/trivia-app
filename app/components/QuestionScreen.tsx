@@ -7,6 +7,7 @@ interface QuestionScreenProps {
   selectedAnswer: string;
   onAnswer: (answer: string) => void;
   score: Score;
+  onNextQuestion: () => Promise<void>;
 }
 
 export default function QuestionScreen({
@@ -14,6 +15,7 @@ export default function QuestionScreen({
   selectedAnswer,
   onAnswer,
   score,
+  onNextQuestion,
 }: QuestionScreenProps) {
   function getAnswerVariant(answer: string): ButtonVariant {
     let answerVariant: ButtonVariant;
@@ -44,7 +46,11 @@ export default function QuestionScreen({
           </Button>
         ))}
       </div>
-      {selectedAnswer && <Button variant='primary'>Next question</Button>}
+      {selectedAnswer && (
+        <Button variant='primary' onClick={onNextQuestion}>
+          Next question
+        </Button>
+      )}
       <div className='text-center text-sm'>
         <div className='flex items-center justify-center gap-2'>
           <CircleCheck className='text-green-500' />

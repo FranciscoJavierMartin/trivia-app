@@ -32,8 +32,8 @@ export default function useGameState() {
   const [gameSession, setGameSession] =
     useState<GameSession>(initialGameSession);
 
-  function updateConfig(newCOnfig: Partial<GameConfig>) {
-    setConfig((prev) => ({ ...prev, ...newCOnfig }));
+  function updateConfig(newConfig: Partial<GameConfig>) {
+    setConfig((prev) => ({ ...prev, ...newConfig }));
   }
 
   async function fetchNewQuestion() {
@@ -51,6 +51,7 @@ export default function useGameState() {
       setGameSession((prev) => ({
         ...prev,
         state: GAME_STATE.PLAYING,
+        selectedAnswer: '',
         questionData,
       }));
     } catch {
