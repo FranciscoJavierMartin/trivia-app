@@ -10,3 +10,11 @@ export const DIFFICULTIES = [
   { value: 'medium', label: 'Medium' },
   { value: 'hard', label: 'Hard' },
 ] as const;
+
+export const GAME_STATE = {
+  SETUP: 'setup',
+  PLAYING: 'playing',
+  LOADING: 'loading',
+  GAME_OVER: 'gameOver',
+  ERROR: 'error',
+} as const;

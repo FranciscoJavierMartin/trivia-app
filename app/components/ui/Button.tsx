@@ -17,6 +17,7 @@ export default function Button({
   children,
   className = '',
   variant = 'default',
+  ...props
 }: PropsWithChildren<ButtonProps>) {
   return (
     <button
@@ -25,6 +26,7 @@ export default function Button({
         variantStyles[variant],
         className,
       )}
+      {...props}
     >
       {children}
     </button>
