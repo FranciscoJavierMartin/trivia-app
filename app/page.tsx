@@ -1,5 +1,6 @@
 import { Gamepad2 } from 'lucide-react';
 import Select from './components/ui/Select';
+import Button from './components/ui/Button';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
             <option value='medium'>Medium</option>
             <option value='hard'>Hard</option>
           </Select>
+          <Button variant='primary'>Start game</Button>
         </div>
       </div>
     </div>
