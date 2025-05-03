@@ -15,6 +15,7 @@ const initialGameSession: GameSession = {
     answers: [],
     correctAnswer: '',
   },
+  selectedAnswer: '',
 };
 
 export default function useGameState() {
@@ -51,11 +52,17 @@ export default function useGameState() {
     }
   }
 
+  function handleAnswer(selectedAnswer: string) {
+    setGameSession((prev) => ({ ...prev, selectedAnswer }));
+  }
+
   return {
     config,
     updateConfig,
     gameState: gameSession.state,
     questionData: gameSession.questionData,
     fetchNewQuestion,
+    handleAnswer,
+    selectedAnswer: gameSession.selectedAnswer,
   };
 }

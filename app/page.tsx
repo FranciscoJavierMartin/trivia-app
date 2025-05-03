@@ -10,8 +10,15 @@ import useGameState from './hooks/useGameState';
 import { GAME_STATE } from './constants';
 
 export default function Home() {
-  const { config, updateConfig, gameState, fetchNewQuestion, questionData } =
-    useGameState();
+  const {
+    config,
+    updateConfig,
+    gameState,
+    fetchNewQuestion,
+    questionData,
+    selectedAnswer,
+    handleAnswer,
+  } = useGameState();
 
   function renderGameScreen(): JSX.Element {
     let screen;
@@ -35,7 +42,13 @@ export default function Home() {
         screen = <GameOverScreen />;
         break;
       case GAME_STATE.PLAYING:
-        screen = <QuestionScreen questionData={questionData} />;
+        screen = (
+          <QuestionScreen
+            questionData={questionData}
+            selectedAnswer={selectedAnswer}
+            onAnswer={handleAnswer}
+          />
+        );
         break;
       case GAME_STATE.ERROR:
         screen = <ErrorScreen onRetry={fetchNewQuestion} />;

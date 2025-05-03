@@ -18,4 +18,5 @@ export interface QuestionData {
 export interface GameSession {
   state: GameState;
   questionData: QuestionData;
+  selectedAnswer: string;
 }
