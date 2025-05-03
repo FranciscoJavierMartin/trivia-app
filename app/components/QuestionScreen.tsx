@@ -1,5 +1,5 @@
 import { CircleCheck, CircleX } from 'lucide-react';
-import Button from './ui/Button';
+import Button, { ButtonVariant } from './ui/Button';
 import { QuestionData } from '../types';
 
 interface QuestionScreenProps {
@@ -13,12 +13,30 @@ export default function QuestionScreen({
   selectedAnswer,
   onAnswer,
 }: QuestionScreenProps) {
+  function getAnswerVariant(answer: string): ButtonVariant {
+    let answerVariant: ButtonVariant;
+
+    if (!selectedAnswer) {
+      answerVariant = 'default';
+    } else if (answer === questionData.correctAnswer) {
+      answerVariant = 'success';
+    } else {
+      answerVariant = 'error';
+    }
+
+    return answerVariant;
+  }
+
   return (
     <>
       <p className='text-center text-lg'>{questionData.question}</p>
       <div className='space-y-3'>
         {questionData.answers.map((answer) => (
-          <Button key={answer} onClick={() => onAnswer(answer)}>
+          <Button
+            key={answer}
+            variant={getAnswerVariant(answer)}
+            onClick={() => onAnswer(answer)}
+          >
             {answer}
           </Button>
         ))}

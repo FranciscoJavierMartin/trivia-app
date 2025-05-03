@@ -8,9 +8,11 @@ const variantStyles = {
   error: 'bg-red-600 hover:bg-red-700 text-white',
 } as const;
 
+export type ButtonVariant = keyof typeof variantStyles;
+
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
-  variant?: keyof typeof variantStyles;
+  variant?: ButtonVariant;
 };
 
 export default function Button({
