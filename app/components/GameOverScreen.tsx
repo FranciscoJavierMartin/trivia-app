@@ -1,10 +1,15 @@
+import { Score } from '../types';
 import Button from './ui/Button';
 
-export default function GameOverScreen() {
+interface GameOverScreenProps {
+  score: Score;
+}
+
+export default function GameOverScreen({ score }: GameOverScreenProps) {
   return (
     <>
       <h2 className='text-2xl font-bold'>Game Over!</h2>
-      <p>You had {0} incorrect answers</p>
+      <p>You had {score.wrong} incorrect answers</p>
       <Button variant='primary'>Try Again</Button>
     </>
   );

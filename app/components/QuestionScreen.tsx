@@ -1,17 +1,19 @@
 import { CircleCheck, CircleX } from 'lucide-react';
 import Button, { ButtonVariant } from './ui/Button';
-import { QuestionData } from '../types';
+import { QuestionData, Score } from '../types';
 
 interface QuestionScreenProps {
   questionData: QuestionData;
   selectedAnswer: string;
   onAnswer: (answer: string) => void;
+  score: Score;
 }
 
 export default function QuestionScreen({
   questionData,
   selectedAnswer,
   onAnswer,
+  score,
 }: QuestionScreenProps) {
   function getAnswerVariant(answer: string): ButtonVariant {
     let answerVariant: ButtonVariant;
@@ -45,9 +47,9 @@ export default function QuestionScreen({
       <div className='text-center text-sm'>
         <div className='flex items-center justify-center gap-2'>
           <CircleCheck className='text-green-500' />
-          <span className='text-green-500'>1 corrent</span>
+          <span className='text-green-500'>{score.correct} corrent</span>
           <CircleX className='text-red-500' />
-          <span className='text-red-500'>1 wrong</span>
+          <span className='text-red-500'>{score.wrong} wrong</span>
         </div>
       </div>
     </>

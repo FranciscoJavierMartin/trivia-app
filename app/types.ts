@@ -15,8 +15,14 @@ export interface QuestionData {
   correctAnswer: string;
 }
 
+export interface Score {
+  correct: number;
+  wrong: number;
+}
+
 export interface GameSession {
   state: GameState;
   questionData: QuestionData;
   selectedAnswer: string;
+  score: Score;
 }

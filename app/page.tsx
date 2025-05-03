@@ -18,6 +18,7 @@ export default function Home() {
     questionData,
     selectedAnswer,
     handleAnswer,
+    score,
   } = useGameState();
 
   function renderGameScreen(): JSX.Element {
@@ -39,7 +40,7 @@ export default function Home() {
         screen = <LoadingScreen />;
         break;
       case GAME_STATE.GAME_OVER:
-        screen = <GameOverScreen />;
+        screen = <GameOverScreen score={score}/>;
         break;
       case GAME_STATE.PLAYING:
         screen = (
@@ -47,6 +48,7 @@ export default function Home() {
             questionData={questionData}
             selectedAnswer={selectedAnswer}
             onAnswer={handleAnswer}
+            score={score}
           />
         );
         break;

@@ -18,3 +18,5 @@ export const GAME_STATE = {
   GAME_OVER: 'gameOver',
   ERROR: 'error',
 } as const;
+
+export const MAX_WRONG_ANSWERS = 3;
